@@ -1,5 +1,5 @@
 import {colors} from './colors';
-import {h} from './src/shared/resposive-dimension';
+import {h} from './../src/shared/resposive-dimension';
 
 export const fonts = {
   font16: {

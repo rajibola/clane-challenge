@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, ImageBackground} from 'react-native';
+import {Data} from '../../data';
 import ItemListComponent from '../../shared/item-list-component';
 import ListContainer from '../../shared/list-container';
 import {styles} from './styles';
@@ -7,25 +8,23 @@ import {styles} from './styles';
 class ListItems extends Component {
   render() {
     var initials = new Set();
-
-    arr.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
-
+    Data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
     var sortedItems = [...initials].sort();
-    console.log(sortedItems);
+
     return (
       <View style={styles.container}>
-        <Text>Hello</Text>
+        {this.topView()}
 
         <ScrollView>
           {sortedItems.map((letter, index) => {
             return (
               <ListContainer
                 key={index}
-                children={arr
-                  .filter(({name}) => name.toLowerCase().charAt(0) === letter)
-                  .map(({name}, i) => {
-                    return <ItemListComponent name={name} key={i} />;
-                  })}
+                children={Data.filter(
+                  ({name}) => name.toLowerCase().charAt(0) === letter,
+                ).map(({name}, i) => {
+                  return <ItemListComponent name={name} key={i} />;
+                })}
               />
             );
           })}
@@ -33,25 +32,14 @@ class ListItems extends Component {
       </View>
     );
   }
+
+  topView() {
+    return (
+      <ImageBackground>
+        <Text>Hello</Text>
+      </ImageBackground>
+    );
+  }
 }
 
 export default ListItems;
-
-var arr = [
-  {name: 'Ahmed'},
-  {name: 'Moso'},
-  {name: 'Zamani'},
-  {name: 'Carter'},
-  {name: 'Mofe'},
-  {name: 'Bolu'},
-  {name: 'HOD'},
-  {name: 'Idris'},
-  {name: 'Kaka'},
-  {name: 'Marius'},
-  {name: 'Ife'},
-  {name: 'Kazeem'},
-  {name: 'Ope'},
-  {name: 'Mariam'},
-  {name: 'Mama'},
-  {name: 'Papa'},
-];

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../../colors';
-import {fonts} from '../../../fonts';
+import {colors} from '../../colors';
+import {fonts} from '../../fonts';
 import {w, h} from '../../shared/resposive-dimension';
 
 export const styles = StyleSheet.create({

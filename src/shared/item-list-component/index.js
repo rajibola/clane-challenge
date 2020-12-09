@@ -5,12 +5,14 @@ import {styles} from './styles';
 
 class ItemListComponent extends Component {
   render() {
+    const {name} = this.props;
+    const firstTwo = getFirstTwo(name);
     return (
       <View style={styles.container}>
         <View style={styles.initialsContainer}>
-          <Text style={styles.initials}>{getFirstTwo(this.props.name)}</Text>
+          <Text style={styles.initials}>{firstTwo}</Text>
         </View>
-        <Text style={styles.name}>{this.props.name}</Text>
+        <Text style={styles.name}>{name}</Text>
       </View>
     );
   }
