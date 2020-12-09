@@ -17,13 +17,14 @@ class ListItems extends Component {
         <Text>Hello</Text>
 
         <ScrollView>
-          {sortedItems.map((letter) => {
+          {sortedItems.map((letter, index) => {
             return (
               <ListContainer
+                key={index}
                 children={arr
                   .filter(({name}) => name.toLowerCase().charAt(0) === letter)
-                  .map(function ({name}) {
-                    return <ItemListComponent name={name} />;
+                  .map(({name}, i) => {
+                    return <ItemListComponent name={name} key={i} />;
                   })}
               />
             );
