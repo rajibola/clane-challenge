@@ -7,9 +7,9 @@ class ItemListComponent extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.initialsContainer}>
-          <Text></Text>
+          <Text style={styles.initials}>hy</Text>
         </View>
-        <Text>{this.props.name}</Text>
+        <Text style={styles.name}>{this.props.name}</Text>
       </View>
     );
   }
