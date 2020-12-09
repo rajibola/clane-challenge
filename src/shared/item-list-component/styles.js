@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   },
   initials: {
     ...fonts.font16,
+    color: colors.darkGray,
   },
   initialsContainer: {
     width: h(40),
