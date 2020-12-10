@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    ...fonts.font16,
+    ...fonts.font14,
   },
   initials: {
     ...fonts.font16,

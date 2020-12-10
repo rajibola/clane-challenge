@@ -8,4 +8,11 @@ export const fonts = {
     lineHeight: h(24),
     color: colors.dark,
   },
+
+  font14: {
+    textTransform: 'uppercase',
+    fontSize: h(14),
+    lineHeight: h(21),
+    color: colors.dark,
+  },
 };
