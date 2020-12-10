@@ -7,12 +7,17 @@
  */
 
 import React from 'react';
-import {SafeAreaView, Text, StatusBar} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import 'react-native-gesture-handler';
 import AppNavigator from './src/navigations';
 
 const App = () => {
-  return <AppNavigator />;
+  return (
+    <View style={{flex: 1}}>
+      <StatusBar barStyle="light-content" backgroundColor={'#0575E6'} />
+      <AppNavigator />
+    </View>
+  );
 };
 
 export default App;

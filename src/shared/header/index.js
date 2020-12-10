@@ -2,9 +2,9 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {h} from '../resposive-dimension';
 import {colors} from '../../colors';
 import PropTypes from 'prop-types';
+import {h} from '../../utils/helpers';
 
 const Header = ({
   title,

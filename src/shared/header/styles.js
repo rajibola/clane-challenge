@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
-import {w, h} from '../resposive-dimension';
+import {h, w} from '../../utils/helpers';
 
 export const styles = StyleSheet.create({
   center: {

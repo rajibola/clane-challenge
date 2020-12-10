@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
 import {fonts} from '../../fonts';
-import {w, h} from '../../shared/resposive-dimension';
+import {h, w} from '../../utils/helpers';
 
 export const styles = StyleSheet.create({
   labeltext: {

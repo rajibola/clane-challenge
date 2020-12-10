@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, TextInput} from 'react-native';
-import {h} from '../resposive-dimension';
 import {styles} from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../colors';
+import {h} from '../../utils/helpers';
 
 const SearchBar = ({onChangeText, value}) => {
   return (
