@@ -37,8 +37,13 @@ class ListItems extends Component {
   }
 
   search = (searchKeyword) => {
-    var newData = Data.filter((item) => item.name.includes(searchKeyword));
-    return this.setState({data: newData, searchKeyword});
+    var newData = Data.filter((item) =>
+      item.name.toLowerCase().includes(searchKeyword.toLowerCase()),
+    );
+    return this.setState({
+      data: newData,
+      searchKeyword,
+    });
   };
   listView() {
     var initials = new Set();
@@ -49,29 +54,25 @@ class ListItems extends Component {
       <ScrollView>
         {sortedItems.map((letter, index) => {
           return (
-            <>
-              <ListContainer
-                key={index}
-                children={this.state.data
-                  .filter(({name}) => name.toLowerCase().charAt(0) === letter)
-                  .map(({name}, i) => {
-                    return (
-                      <ItemListComponent
-                        isFirst={i == 0 && true}
-                        name={name}
-                        key={i}
-                      />
-                    );
-                  })}
-              />
-            </>
+            <ListContainer
+              key={index}
+              children={this.state.data
+                .filter(({name}) => name.toLowerCase().charAt(0) === letter)
+                .map(({name}, i) => {
+                  return (
+                    <ItemListComponent
+                      isFirst={i == 0 && true}
+                      name={name}
+                      key={i}
+                    />
+                  );
+                })}
+            />
           );
         })}
       </ScrollView>
     );
   }
-
-  // handleText = (text) => this.setState({searchKeyword: text});
 
   topView() {
     return (
