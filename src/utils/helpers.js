@@ -5,3 +5,5 @@ export const getfirstCharacters = (end) => {
 };
 
 export const getFirstTwo = getfirstCharacters(2);
+
+export const getfirstLetter = getfirstCharacters(1);

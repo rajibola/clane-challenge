@@ -1,43 +1,92 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, ImageBackground} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  ImageBackground,
+  TextInput,
+  StatusBar,
+} from 'react-native';
 import {Data} from '../../data';
 import ItemListComponent from '../../shared/item-list-component';
 import ListContainer from '../../shared/list-container';
 import {styles} from './styles';
+import {images} from '../../images';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {h} from '../../shared/resposive-dimension';
+import {colors} from '../../colors';
 
 class ListItems extends Component {
   render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar setBackgroundColor="transparent" />
+        {this.topView()}
+
+        {this.listView()}
+      </View>
+    );
+  }
+
+  listView() {
     var initials = new Set();
     Data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
     var sortedItems = [...initials].sort();
-
     return (
-      <View style={styles.container}>
-        {this.topView()}
-
-        <ScrollView>
-          {sortedItems.map((letter, index) => {
-            return (
-              <ListContainer
-                key={index}
-                children={Data.filter(
-                  ({name}) => name.toLowerCase().charAt(0) === letter,
-                ).map(({name}, i) => {
-                  return <ItemListComponent name={name} key={i} />;
-                })}
-              />
-            );
-          })}
-        </ScrollView>
-      </View>
+      <ScrollView>
+        {sortedItems.map((letter, index) => {
+          return (
+            <ListContainer
+              key={index}
+              children={Data.filter(
+                ({name}) => name.toLowerCase().charAt(0) === letter,
+              ).map(({name}, i) => {
+                return (
+                  <ItemListComponent
+                    isFirst={i == 0 && true}
+                    name={name}
+                    key={i}
+                  />
+                );
+              })}
+            />
+          );
+        })}
+      </ScrollView>
     );
   }
 
   topView() {
     return (
-      <ImageBackground>
-        <Text>Hello</Text>
+      <ImageBackground source={images.background} style={styles.background}>
+        {this.transparentHeader()}
+
+        <View style={styles.searchContainer}>
+          <Ionicons name="search" size={h(18)} style={styles.searchIcon} />
+
+          <TextInput
+            placeholder="Search"
+            placeholderTextColor={colors.darkGray}
+            style={styles.search}
+          />
+        </View>
       </ImageBackground>
+    );
+  }
+
+  transparentHeader() {
+    return (
+      <View style={styles.header}>
+        <View style={styles.minimumWidth}>
+          <Ionicons
+            name="ios-close-outline"
+            size={h(35)}
+            color={colors.white}
+          />
+        </View>
+        <Text style={styles.center}>Profession</Text>
+        <Text style={styles.minimumWidth}></Text>
+      </View>
     );
   }
 }

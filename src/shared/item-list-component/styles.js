@@ -4,6 +4,21 @@ import {fonts} from '../../fonts';
 import {w, h} from '../../shared/resposive-dimension';
 
 export const styles = StyleSheet.create({
+  labeltext: {
+    ...fonts.font16,
+    color: colors.darkBlue,
+  },
+  label: {
+    width: h(30),
+    height: h(30),
+    top: h(12),
+    right: w(20),
+    position: 'absolute',
+    backgroundColor: colors.lightBlue,
+    borderRadius: h(4),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   name: {
     ...fonts.font16,
   },
