@@ -10,6 +10,7 @@ import {h} from '../../shared/resposive-dimension';
 import {colors} from '../../colors';
 import TransparentHeader from '../../shared/transparent-header';
 import {search} from '../../utils/helpers';
+import SearchBar from '../../shared/search-bar';
 
 class ListItems extends Component {
   constructor() {
@@ -38,18 +39,7 @@ class ListItems extends Component {
     return (
       <ImageBackground source={images.background} style={styles.background}>
         <TransparentHeader />
-
-        <View style={styles.searchContainer}>
-          <Ionicons name="search" size={h(18)} style={styles.searchIcon} />
-
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor={colors.darkGray}
-            onChangeText={this.search}
-            style={styles.search}
-            value={this.state.searchKeyword}
-          />
-        </View>
+        <SearchBar that={this} />
       </ImageBackground>
     );
   }
