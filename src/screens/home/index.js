@@ -3,9 +3,9 @@ import {View, ImageBackground} from 'react-native';
 import {Data} from '../../data';
 import {styles} from './styles';
 import {images} from '../../images';
-import TransparentHeader from '../../shared/transparent-header';
 import SearchBar from '../../shared/search-bar';
 import ListComponent from '../../shared/list-component';
+import Header from '../../shared/header';
 
 class Home extends Component {
   constructor() {
@@ -31,7 +31,7 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={images.background} style={styles.background}>
-          <TransparentHeader />
+          <Header />
           <SearchBar value={searchKeyword} onChangeText={this.search} />
         </ImageBackground>
 

@@ -25,6 +25,7 @@ const ItemListComponent = ({name, isFirst}) => {
 
 ItemListComponent.propTypes = {
   name: PropTypes.string,
+  isFirst: PropTypes.bool,
 };
 
 ItemListComponent.defaultProps = {
