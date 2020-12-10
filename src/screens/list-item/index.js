@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  ImageBackground,
-  TextInput,
-  StatusBar,
-} from 'react-native';
+import {View, Text, ScrollView, ImageBackground, TextInput} from 'react-native';
 import {Data} from '../../data';
 import ItemListComponent from '../../shared/item-list-component';
 import ListContainer from '../../shared/list-container';
@@ -15,20 +8,19 @@ import {images} from '../../images';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {h} from '../../shared/resposive-dimension';
 import {colors} from '../../colors';
+import TransparentHeader from '../../shared/transparent-header';
 
 class ListItems extends Component {
   constructor() {
     super();
     this.state = {
       searchKeyword: '',
-      isSearching: false,
       data: Data,
     };
   }
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar setBackgroundColor="transparent" />
         {this.topView()}
 
         {this.listView()}
@@ -46,28 +38,24 @@ class ListItems extends Component {
     });
   };
   listView() {
+    var {data} = this.state;
     var initials = new Set();
-    this.state.data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
+    data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
     var sortedItems = [...initials].sort();
 
     return (
       <ScrollView>
         {sortedItems.map((letter, index) => {
           return (
-            <ListContainer
-              key={index}
-              children={this.state.data
+            <ListContainer key={index}>
+              {data
                 .filter(({name}) => name.toLowerCase().charAt(0) === letter)
                 .map(({name}, i) => {
                   return (
-                    <ItemListComponent
-                      isFirst={i == 0 && true}
-                      name={name}
-                      key={i}
-                    />
+                    <ItemListComponent isFirst={i === 0} name={name} key={i} />
                   );
                 })}
-            />
+            </ListContainer>
           );
         })}
       </ScrollView>
@@ -77,7 +65,7 @@ class ListItems extends Component {
   topView() {
     return (
       <ImageBackground source={images.background} style={styles.background}>
-        {this.transparentHeader()}
+        <TransparentHeader />
 
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={h(18)} style={styles.searchIcon} />
@@ -91,22 +79,6 @@ class ListItems extends Component {
           />
         </View>
       </ImageBackground>
-    );
-  }
-
-  transparentHeader() {
-    return (
-      <View style={styles.header}>
-        <View style={styles.minimumWidth}>
-          <Ionicons
-            name="ios-close-outline"
-            size={h(35)}
-            color={colors.white}
-          />
-        </View>
-        <Text style={styles.center}>Profession</Text>
-        <Text style={styles.minimumWidth}></Text>
-      </View>
     );
   }
 }
