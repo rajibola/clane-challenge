@@ -31,7 +31,7 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={images.background} style={styles.background}>
-          <Header />
+          <Header title="Profession" />
           <SearchBar value={searchKeyword} onChangeText={this.search} />
         </ImageBackground>
 
