@@ -17,6 +17,14 @@ import {h} from '../../shared/resposive-dimension';
 import {colors} from '../../colors';
 
 class ListItems extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchKeyword: '',
+      isSearching: false,
+      data: Data,
+    };
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -28,33 +36,42 @@ class ListItems extends Component {
     );
   }
 
+  search = (searchKeyword) => {
+    var newData = Data.filter((item) => item.name.includes(searchKeyword));
+    return this.setState({data: newData, searchKeyword});
+  };
   listView() {
     var initials = new Set();
-    Data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
+    this.state.data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
     var sortedItems = [...initials].sort();
+
     return (
       <ScrollView>
         {sortedItems.map((letter, index) => {
           return (
-            <ListContainer
-              key={index}
-              children={Data.filter(
-                ({name}) => name.toLowerCase().charAt(0) === letter,
-              ).map(({name}, i) => {
-                return (
-                  <ItemListComponent
-                    isFirst={i == 0 && true}
-                    name={name}
-                    key={i}
-                  />
-                );
-              })}
-            />
+            <>
+              <ListContainer
+                key={index}
+                children={this.state.data
+                  .filter(({name}) => name.toLowerCase().charAt(0) === letter)
+                  .map(({name}, i) => {
+                    return (
+                      <ItemListComponent
+                        isFirst={i == 0 && true}
+                        name={name}
+                        key={i}
+                      />
+                    );
+                  })}
+              />
+            </>
           );
         })}
       </ScrollView>
     );
   }
+
+  // handleText = (text) => this.setState({searchKeyword: text});
 
   topView() {
     return (
@@ -67,7 +84,9 @@ class ListItems extends Component {
           <TextInput
             placeholder="Search"
             placeholderTextColor={colors.darkGray}
+            onChangeText={this.search}
             style={styles.search}
+            value={this.state.searchKeyword}
           />
         </View>
       </ImageBackground>

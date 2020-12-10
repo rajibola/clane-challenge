@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     padding: 0,
     ...fonts.font16,
     color: colors.darkGray,
+    textTransform: 'capitalize',
   },
   searchIcon: {
     marginHorizontal: w(15),
