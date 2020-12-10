@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
   labeltext: {
     ...fonts.font16,
     color: colors.darkBlue,
-    fontWeight: 'bold',
   },
   label: {
     width: h(30),
