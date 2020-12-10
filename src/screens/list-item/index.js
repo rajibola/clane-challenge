@@ -31,11 +31,9 @@ class ListItems extends Component {
   }
 
   search = (searchKeyword) => {
-    var {data} = this.state;
-    var newData = data.filter((item) =>
+    var newData = Data.filter((item) =>
       item.name.toLowerCase().includes(searchKeyword.toLowerCase()),
     );
-
     this.setState({
       data: newData,
       searchKeyword,

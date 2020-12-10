@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import React from 'react';
+import {View, ScrollView} from 'react-native';
 import {styles} from './styles';
 import ItemListComponent from '../item-list-component';
-import {Data} from '../../data';
 
 const ListComponent = ({data}) => {
   var initials = new Set();
