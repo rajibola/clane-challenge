@@ -9,7 +9,7 @@ const ListComponent = ({data}) => {
   var sortedItems = [...initials].sort();
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollContainer}>
       {sortedItems.map((letter, index) => {
         return (
           <View key={index} style={styles.listContainer}>

@@ -3,6 +3,7 @@ import {
   widthPercentageToDP,
   heightPercentageToDP,
 } from 'react-native-responsive-screen';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 export const h = (height) => {
   return heightPercentageToDP((height / 812) * 100);
@@ -21,3 +22,7 @@ export const getfirstCharacters = (end) => {
 export const getFirstTwo = getfirstCharacters(2);
 
 export const getfirstLetter = getfirstCharacters(1);
+
+export function getBottomSpace() {
+  return getStatusBarHeight(true) ? 30 : 0;
+}

@@ -1,8 +1,11 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
-import {h, w} from '../../utils/helpers';
+import {getBottomSpace, h, w} from '../../utils/helpers';
 
 export const styles = StyleSheet.create({
+  scrollContainer: {
+    marginBottom: getBottomSpace() ? h(30) : 0,
+  },
   listContainer: {flex: 1, backgroundColor: 'white', marginTop: h(13)},
   center: {
     minWidth: w(100),
