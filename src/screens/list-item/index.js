@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, ImageBackground, TextInput} from 'react-native';
+import {View, ScrollView, ImageBackground, TextInput} from 'react-native';
 import {Data} from '../../data';
 import ItemListComponent from '../../shared/item-list-component';
 import ListContainer from '../../shared/list-container';
@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {h} from '../../shared/resposive-dimension';
 import {colors} from '../../colors';
 import TransparentHeader from '../../shared/transparent-header';
+import {search} from '../../utils/helpers';
 
 class ListItems extends Component {
   constructor() {
@@ -29,14 +30,30 @@ class ListItems extends Component {
   }
 
   search = (searchKeyword) => {
-    var newData = Data.filter((item) =>
-      item.name.toLowerCase().includes(searchKeyword.toLowerCase()),
-    );
-    return this.setState({
-      data: newData,
-      searchKeyword,
-    });
+    var newSearch = search(this, Data);
+    newSearch(searchKeyword);
   };
+
+  topView() {
+    return (
+      <ImageBackground source={images.background} style={styles.background}>
+        <TransparentHeader />
+
+        <View style={styles.searchContainer}>
+          <Ionicons name="search" size={h(18)} style={styles.searchIcon} />
+
+          <TextInput
+            placeholder="Search"
+            placeholderTextColor={colors.darkGray}
+            onChangeText={this.search}
+            style={styles.search}
+            value={this.state.searchKeyword}
+          />
+        </View>
+      </ImageBackground>
+    );
+  }
+
   listView() {
     var {data} = this.state;
     var initials = new Set();
@@ -59,26 +76,6 @@ class ListItems extends Component {
           );
         })}
       </ScrollView>
-    );
-  }
-
-  topView() {
-    return (
-      <ImageBackground source={images.background} style={styles.background}>
-        <TransparentHeader />
-
-        <View style={styles.searchContainer}>
-          <Ionicons name="search" size={h(18)} style={styles.searchIcon} />
-
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor={colors.darkGray}
-            onChangeText={this.search}
-            style={styles.search}
-            value={this.state.searchKeyword}
-          />
-        </View>
-      </ImageBackground>
     );
   }
 }
