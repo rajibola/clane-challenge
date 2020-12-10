@@ -7,7 +7,7 @@ import TransparentHeader from '../../shared/transparent-header';
 import SearchBar from '../../shared/search-bar';
 import ListComponent from '../../shared/list-component';
 
-class ListItems extends Component {
+class Home extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,6 +15,16 @@ class ListItems extends Component {
       data: Data,
     };
   }
+
+  search = (searchKeyword) => {
+    var newData = Data.filter((item) =>
+      item.name.toLowerCase().includes(searchKeyword.toLowerCase()),
+    );
+    this.setState({
+      data: newData,
+      searchKeyword,
+    });
+  };
 
   render() {
     const {searchKeyword, data} = this.state;
@@ -29,16 +39,6 @@ class ListItems extends Component {
       </View>
     );
   }
-
-  search = (searchKeyword) => {
-    var newData = Data.filter((item) =>
-      item.name.toLowerCase().includes(searchKeyword.toLowerCase()),
-    );
-    this.setState({
-      data: newData,
-      searchKeyword,
-    });
-  };
 }
 
-export default ListItems;
+export default Home;
