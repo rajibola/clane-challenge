@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {View, TextInput} from 'react-native';
 import {h} from '../resposive-dimension';
 import {styles} from './styles';

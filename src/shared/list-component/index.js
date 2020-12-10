@@ -15,6 +15,9 @@ const ListComponent = ({data}) => {
           <View key={index} style={styles.listContainer}>
             {data
               .filter(({name}) => name.toLowerCase().charAt(0) === letter)
+              .sort(function (a, b) {
+                return a.name > b.name;
+              })
               .map(({name}, i) => {
                 return (
                   <ItemListComponent isFirst={i === 0} name={name} key={i} />
