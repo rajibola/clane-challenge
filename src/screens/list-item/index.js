@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
-import {View, ScrollView, ImageBackground, TextInput} from 'react-native';
+import {View, ImageBackground} from 'react-native';
 import {Data} from '../../data';
-import ItemListComponent from '../../shared/item-list-component';
-import ListContainer from '../../shared/list-container';
 import {styles} from './styles';
 import {images} from '../../images';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {h} from '../../shared/resposive-dimension';
-import {colors} from '../../colors';
 import TransparentHeader from '../../shared/transparent-header';
-import {search} from '../../utils/helpers';
 import SearchBar from '../../shared/search-bar';
+import ListComponent from '../../shared/list-component';
 
 class ListItems extends Component {
   constructor() {
@@ -20,54 +15,32 @@ class ListItems extends Component {
       data: Data,
     };
   }
+
   render() {
+    const {searchKeyword, data} = this.state;
     return (
       <View style={styles.container}>
-        {this.topView()}
+        <ImageBackground source={images.background} style={styles.background}>
+          <TransparentHeader />
+          <SearchBar value={searchKeyword} onChangeText={this.search} />
+        </ImageBackground>
 
-        {this.listView()}
+        <ListComponent data={data} />
       </View>
     );
   }
 
   search = (searchKeyword) => {
-    var newSearch = search(this, Data);
-    newSearch(searchKeyword);
-  };
-
-  topView() {
-    return (
-      <ImageBackground source={images.background} style={styles.background}>
-        <TransparentHeader />
-        <SearchBar that={this} />
-      </ImageBackground>
-    );
-  }
-
-  listView() {
     var {data} = this.state;
-    var initials = new Set();
-    data.map(({name}) => initials.add(name.toLowerCase().charAt(0)));
-    var sortedItems = [...initials].sort();
-
-    return (
-      <ScrollView>
-        {sortedItems.map((letter, index) => {
-          return (
-            <ListContainer key={index}>
-              {data
-                .filter(({name}) => name.toLowerCase().charAt(0) === letter)
-                .map(({name}, i) => {
-                  return (
-                    <ItemListComponent isFirst={i === 0} name={name} key={i} />
-                  );
-                })}
-            </ListContainer>
-          );
-        })}
-      </ScrollView>
+    var newData = data.filter((item) =>
+      item.name.toLowerCase().includes(searchKeyword.toLowerCase()),
     );
-  }
+
+    this.setState({
+      data: newData,
+      searchKeyword,
+    });
+  };
 }
 
 export default ListItems;

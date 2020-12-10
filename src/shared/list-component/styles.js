@@ -1,8 +1,18 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
-import {w, h, deviceWidth} from '../../shared/resposive-dimension';
+import {w, h} from '../resposive-dimension';
 
 export const styles = StyleSheet.create({
+  listContainer: {flex: 1, backgroundColor: 'white', marginTop: h(13)},
+  center: {
+    minWidth: w(100),
+    textAlign: 'center',
+    color: colors.white,
+  },
+  minimumWidth: {
+    width: w(100),
+    justifyContent: 'center',
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -11,16 +21,5 @@ export const styles = StyleSheet.create({
     marginTop: h(20),
 
     justifyContent: 'space-between',
-  },
-  background: {
-    width: deviceWidth,
-    height: h(150),
-  },
-  name: {
-    fontSize: h(20),
-  },
-  container: {
-    flex: 1,
-    backgroundColor: colors.primary,
   },
 });
