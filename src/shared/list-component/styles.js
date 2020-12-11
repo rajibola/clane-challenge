@@ -4,7 +4,7 @@ import {getBottomSpace, h, w} from '../../utils/helpers';
 
 export const styles = StyleSheet.create({
   scrollContainer: {
-    marginBottom: getBottomSpace() ? h(30) : 0,
+    marginBottom: getBottomSpace(),
   },
   listContainer: {flex: 1, backgroundColor: 'white', marginTop: h(13)},
   center: {
