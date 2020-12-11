@@ -1,9 +1,9 @@
 # clane-challenge
 
 
-[iOS App Preview(gif)](./doc/images/iOS-preview.gif)
-[App Preview (Android)](./doc/images/screenshotAndroid.png)
-[App Preview (iOS)](./doc/images/screenshotIOS.png)
+![iOS App Preview(gif)](./doc/images/iOS-preview.gif)
+![App Preview (Android)](./doc/images/screenshotAndroid.png)
+![App Preview (iOS)](./doc/images/screenshotIOS.png)
 
 ## Getting Started
 
