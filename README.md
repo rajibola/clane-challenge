@@ -1,9 +1,10 @@
 # clane-challenge
 
 
-![iOS App Preview(gif)](./doc/images/iOS-preview.gif)
-![App Preview (Android)](./doc/images/screenshotAndroid.png)
-![App Preview (iOS)](./doc/images/screenshotIOS.png)
+
+<img src="./doc/images/iOS-preview.gif" alt="iOS App Preview(gif)"  style="max-height: 29%; max-width: 29%;"/>
+<img src="./doc/images/screenshotIOS.png" alt="App Preview (iOS)"  style="max-height: 33%; max-width: 33%;"/>
+<img src="./doc/images/screenshotAndroid.png" alt="App Preview (Android)"  style="max-height: 29%; max-width: 29%;"/>
 
 ## Getting Started
 
